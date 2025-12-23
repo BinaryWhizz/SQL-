@@ -90,3 +90,23 @@ SELECT * FROM sample_table_3;
 
 
 
+DROP TABLE sample_table_3;
+
+SHOW TABLES;
+
+
+CREATE TABLE final_table_3(
+ID int NOT NULL, 
+Person_names varchar(255),
+Age int,
+Income float,
+UNIQUE(ID),
+CHECK(Age >= 18)
+);
+
+DESC final_table_3;      -- Show the structure (schema) of the table named final_table_3.
+
+INSERT INTO final_table_3 (ID, Person_names, Age, Income) 
+VALUES (2,'Alex', 34, 23400.75); 
+
+SELECT * FROM final_table_3; 
