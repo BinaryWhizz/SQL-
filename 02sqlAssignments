@@ -1,0 +1,39 @@
+Assignment 1 - 
+Create a table named table_truncate 
+Use variables Gender (varchar(255)) and Age (integer) 
+Add the following values into table_truncate ('Male', 45) ('Female', 27) ('Male', 33) ('Female', 38) 
+Select all the columns of the table and show the result Delete all the values of the table
+
+Solution:
+
+CREATE TABLE table_truncate (
+    Gender VARCHAR(255),
+    Age INTEGER
+);
+
+INSERT INTO table_truncate (Gender, Age) VALUES
+('Male', 45),
+('Female', 27),
+('Male', 33),
+('Female', 38);
+
+SELECT * FROM table_truncate;
+
+TRUNCATE TABLE table_truncate;
+
+
+Assignment 2 - 
+Create a table named table_check
+Use variables Gender (varchar(255)) and Age (integer)
+Use CHECK function so that the column salary does not accept values less than 10000 USD.
+
+Solution:
+
+CREATE TABLE table_check (
+    Gender VARCHAR(255),
+    Age INTEGER,
+    Salary INTEGER 
+    CHECK (Salary >= 10000)
+);
+
+
