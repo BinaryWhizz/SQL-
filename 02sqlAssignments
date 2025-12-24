@@ -37,3 +37,29 @@ CREATE TABLE table_check (
 );
 
 
+Assignment 3 - 
+Open your MySQL workbench
+Create a table using the following information:
+Table name: table_modify_col
+Columns & datatypes: StudentNames (varchar(255)), Age (float)
+Insert the following values:
+("Alex", 18.43)
+("Akash", 27.56)
+("Ramisha", 21.45)
+Write necessary code to change the datatype of Age into integer
+
+Solution: 
+
+CREATE TABLE table_modify_col (
+    StudentNames VARCHAR(255),
+    Age FLOAT
+);
+
+INSERT INTO table_modify_col (StudentNames, Age)
+VALUES
+('Alex', 18.43),
+('Akash', 27.56),
+('Ramisha', 21.45);
+ALTER TABLE table_modify_col
+MODIFY Age INT;
+
