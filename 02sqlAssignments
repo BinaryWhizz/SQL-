@@ -7,7 +7,7 @@ Select all the columns of the table and show the result Delete all the values of
 Solution:
 
 CREATE TABLE table_truncate (
-    Gender VARCHAR(255),
+    Gender VARCHAR(255), 
     Age INTEGER
 );
 
