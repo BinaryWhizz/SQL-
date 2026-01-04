@@ -424,3 +424,115 @@ SELECT *
 FROM student2 as s2
 LEFT JOIN course as c
 ON s2.id = c.id;
+
+SELECT *
+FROM student2 as s2
+RIGHT JOIN course as c
+ON s2.id = c.id;
+
+SELECT *
+FROM student2 as s2
+LEFT JOIN course as c
+ON s2.id = c.id
+UNION
+SELECT *
+FROM student2 as s2
+RIGHT JOIN course as c
+ON s2.id = c.id;
+
+CREATE TABLE employee(
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    manager_id INT
+);
+
+INSERT INTO employee (id, name, manager_id)
+VALUES
+(101, "adam", 103),
+(102, "bob", 104),
+(103, "casey", NULL),
+(104, "donald", 103);
+
+SELECT * FROM employee;
+
+SELECT *
+FROM employee as a
+JOIN employee as b
+ON a.id = b.manager_id;
+
+SELECT a.name, b.name
+FROM employee as a
+JOIN employee as b
+ON a.id = b.manager_id;
+
+SELECT name FROM employee
+UNION 
+SELECT name FROM employee;
+
+SELECT name FROM employee
+UNION ALL                   -- Gives duplicate values
+SELECT name FROM employee; 
+
+SELECT AVG(marks)
+FROM student1;
+
+SELECT name, marks
+FROM student1
+WHERE marks > 84.5000;
+
+
+-- If new student is added in the table or incorrect-marks(mistakes) are corrected in the table 
+-- then below code will automatically calculate updated value and will give us the updated result 
+-- This SQL query is dynamic 
+
+SELECT name, marks
+FROM student1
+WHERE marks > ( SELECT AVG(marks) FROM student1); 
+
+
+SELECT rollno
+FROM student1
+WHERE rollno % 2 = 0;
+
+SELECT name, rollno
+FROM student1
+WHERE rollno IN (102, 104, 106);
+
+SELECT name, rollno
+FROM student1
+WHERE rollno IN ( 
+    SELECT rollno
+    FROM student1
+    WHERE rollno % 2 = 0); 
+
+    
+SELECT *
+FROM student1
+WHERE city = "Delhi"; 
+
+-- A demonstration that subqueries can be written in this way also 
+SELECT MAX(marks)
+FROM ( SELECT *
+       FROM student1
+	   WHERE city = "Delhi") AS temp;  
+       
+-- Also
+SELECT MAX(marks)
+FROM student1
+WHERE city = "Delhi";
+
+-- In SELECT also subqueries can be used but it's unused
+SELECT (SELECT MAX(marks) FROM student1), name
+FROM student;
+
+-- Not real table but a virtual table 
+CREATE VIEW view1 AS 
+SELECT rollno, name, marks FROM student1;
+
+SELECT * FROM view1;
+
+-- now different conditions can be applied on view1
+SELECT * FROM view1
+WHERE marks > 90;
+
+DROP VIEW view1;
